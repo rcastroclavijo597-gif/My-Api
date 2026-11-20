@@ -1,6 +1,7 @@
 import express from "express";
 import { db } from "./db.js";
-import { authRouter, verificarToken } from "./auth.js";
+import { authRouter } from "./auth.js";
+import { verificarToken, soloAdmin } from "./middlewares.js";
 
 const app = express();
 app.set("json spaces", 2);
@@ -183,7 +184,7 @@ app.patch("/productos/:id",verificarToken, async (req, res) => {
 });
 
 // DELETE - Eliminar un producto por ID
-app.delete("/productos/:id",verificarToken, async (req, res) => {
+app.delete("/productos/:id", verificarToken, soloAdmin, async (req, res) => {
   try {
     const id = Number(req.params.id);
 
