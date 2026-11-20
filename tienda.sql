@@ -18,9 +18,10 @@ CREATE TABLE usuarios (
 INSERT INTO productos (nombre, precio, stock) 
 VALUES ('Teclado', 80000, 10), ('Mouse', 35000, 25);
 
-CREATE TABLE usuarios (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(100) NOT NULL UNIQUE,
-  password VARCHAR(100) NOT NULL,
-  rol VARCHAR(20) NOT NULL DEFAULT 'usuario'
+USE tienda;
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    rol VARCHAR(20) NOT NULL DEFAULT 'usuario'
 );

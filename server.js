@@ -1,9 +1,11 @@
 import express from "express";
 import { db } from "./db.js";
+import { authRouter, verificarToken } from "./auth.js";
 
 const app = express();
 app.set("json spaces", 2);
 app.use(express.json());
+app.use(authRouter);
 
 // GET /productos
 app.get("/productos", async (req, res) => {
@@ -36,7 +38,7 @@ app.get("/productos/:id", async (req, res) => {
 });
 
 // POST - Crear un nuevo producto
-app.post("/productos", async (req, res) => {
+app.post("/productos",verificarToken, async (req, res) => {
   try {
     const { nombre, precio, stock } = req.body;
 
@@ -74,7 +76,7 @@ app.post("/productos", async (req, res) => {
 });
 
 // PUT - Reemplazar todos los datos de un producto
-app.put("/productos/:id", async (req, res) => {
+app.put("/productos/:id",verificarToken, async (req, res) => {
   try {
     const id = Number(req.params.id);
 
@@ -122,7 +124,7 @@ app.put("/productos/:id", async (req, res) => {
 });
 
 // PATCH - Actualizar algunos datos de un producto
-app.patch("/productos/:id", async (req, res) => {
+app.patch("/productos/:id",verificarToken, async (req, res) => {
   try {
     const id = Number(req.params.id);
 
@@ -181,7 +183,7 @@ app.patch("/productos/:id", async (req, res) => {
 });
 
 // DELETE - Eliminar un producto por ID
-app.delete("/productos/:id", async (req, res) => {
+app.delete("/productos/:id",verificarToken, async (req, res) => {
   try {
     const id = Number(req.params.id);
 

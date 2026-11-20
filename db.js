@@ -6,3 +6,4 @@ export const db = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: "tienda",
 });
+
