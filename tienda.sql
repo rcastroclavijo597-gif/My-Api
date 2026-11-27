@@ -25,3 +25,10 @@ CREATE TABLE IF NOT EXISTS usuarios (
     password VARCHAR(100) NOT NULL,
     rol VARCHAR(20) NOT NULL DEFAULT 'usuario'
 );
+-- Actividad 6: tabla de categorías (para categorias.routes.js)
+USE tienda;
+CREATE TABLE IF NOT EXISTS categorias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL UNIQUE
+);
+INSERT IGNORE INTO categorias (nombre) VALUES ('Periféricos'), ('Accesorios');

@@ -1,10 +1,11 @@
 {
-  "name": "actividad-3",
+  "name": "actividad-6",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "API de la tienda organizada en carpetas",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --env-file=.env src/server.js",
+    "dev": "node --watch --env-file=.env src/server.js"
   },
   "keywords": [],
   "author": "",
